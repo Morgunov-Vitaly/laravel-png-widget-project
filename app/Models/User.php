@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\UserStatusesEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -52,5 +50,11 @@ class User extends Authenticatable
     public function getStatusName(): string
     {
         return UserStatusesEnum::getNameByValue($this->status);
+    }
+
+    public static function getUserStatus(string $id)
+    {
+
+        return self::query()->where('id', $id)->value('status');
     }
 }

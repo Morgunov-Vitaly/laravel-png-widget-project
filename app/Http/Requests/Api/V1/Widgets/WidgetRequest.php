@@ -17,12 +17,12 @@ class WidgetRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'w' => [
+            'width' => [
                 'integer',
                 'min:100',
                 'max:500',
             ],
-            'h' => [
+            'height' => [
                 'integer',
                 'min:100',
                 'max:500',
