@@ -2,7 +2,12 @@
 Тестовый проект на Laravel по генерации пользовательского png виджета на Laravel
 
 
-## Laravel Sail
+## Запуск проекта
+Для запуска проекта запустите команду `make init`
+
+
+## Dev
+### Laravel Sail
 Для работы с приложением в локальном окружении используется Laravel Sail
 https://laravel.com/docs/10.x/installation#choosing-your-sail-services
 
@@ -12,7 +17,7 @@ https://laravel.com/docs/10.x/installation#choosing-your-sail-services
 `make add-alias` - автоматически добавит алиас.
 
 
-## Разворачивание в локальном окружении
+### Разворачивание в локальном окружении
 `sail build --no-cache` команда для обновления образов docker-контейнеров
 `sail`  команда - для отображения списка доступных команд
 `sail up` - Чтобы запустить все контейнеры Docker, определенные в файле docker-compose.yml
@@ -38,16 +43,6 @@ https://laravel.com/docs/10.x/installation#choosing-your-sail-services
 ### Проблема занятого 80 порта
 Может возникнуть ситуация, когда при запуске приложения возникает ошибка `listen tcp4 0.0.0.0:80: bind: address already in use`.
 Для освобождения порта выполните команду: `sudo systemctl stop nginx`
-
-### PHP
-В настоящее время Sail поддерживает обслуживание вашего приложения через PHP 8.1, PHP 8.0 или PHP 7.4.
-Версия PHP по умолчанию, используемая Sail, в настоящее время - PHP 8.1.
-О том как сменить версию PHP читай [здесь](https://laravel.su/docs/8.x/sail#sail-php-versions)
-
-После обновления файла docker-compose.yml вашего приложения вы должны обновить образы контейнеров:
-
-`sail build --no-cache`
-`sail up`
 
 О том как предоставить доступ к сайту читай [здесь](https://laravel.su/docs/8.x/sail#sharing-your-site)
 
@@ -81,7 +76,7 @@ https://laravel.su/docs/8.x/sail#executing-sail-commands
 laravelsail/php81-composer:latest \
 composer install --ignore-platform-reqs`
 
-## [Отладка с Xdebug](https://laravel.su/docs/8.x/sail#debugging-with-xdebug)
+### [Отладка с Xdebug](https://laravel.su/docs/8.x/sail#debugging-with-xdebug)
 Для тестирования из Postman достаточно добавить параметр ```?XDEBUG_SESSION_START=PHPSTORM``` в адрес запроса
 Либо добавить куки ```XDEBUG_SESSION=PHPSTORM; Path=/;```
 
@@ -104,7 +99,7 @@ composer install --ignore-platform-reqs`
 `SAIL_XDEBUG_MODE=develop,debug,coverage`
 
 ### Отладка Artisan-команд
-Для запуска Artisan-команд с включённым Xdebug используйте команду sail debug:
+Для запуска Artisan-команд с включённым Xdebug используйте команду `sail debug`:
 
 #### Run an Artisan command without Xdebug...
 - `sail artisan migrate`
@@ -112,14 +107,14 @@ composer install --ignore-platform-reqs`
 #### Run an Artisan command with Xdebug...
 - `sail debug migrate`
 
-## Интеграция с почтовым сервисом рассылок MailHog
+### Интеграция с почтовым сервисом рассылок MailHog
 
 В локальном окружении использован тестовый сервис MailHog в локальном окружении доступен по
 адресу [http://localhost:8025/](http://localhost:8025/)
 
-## Хелперы
+### Хелперы
 
-### Очистка кеша системы при внесении изменений в конфигурацию
+#### Очистка кеша системы при внесении изменений в конфигурацию:
 `php artisan cache:clear && php artisan route:clear && php artisan config:clear && php artisan view:clear`
 + `supervisorctl restart all`
   или `sail php artisan cache:clear && sail php artisan route:clear && sail php artisan config:clear && sail php artisan view:clear`
