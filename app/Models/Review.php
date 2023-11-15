@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\UserStatusesEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -30,7 +29,7 @@ class Review extends Model
         return $this->belongsTo('users');
     }
 
-    public static function getAverageRatingByUserId(string $userId, ?int $precision = 0)
+    public static function getAverageRatingByUserId(string $userId, ?int $precision = 2)
     {
         $avgRating = self::where('user_id', $userId)
             ->where('is_published', true)
