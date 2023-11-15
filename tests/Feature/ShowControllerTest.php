@@ -12,20 +12,20 @@ use Tests\TestCase;
 
 class ShowControllerTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-        // Создаем тестовую директорию для изображений в хранилище
-        Storage::fake('public');
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        // Удаляем временные изображения после тестов
-        Storage::disk('public')->deleteDirectory('images');
-    }
-
+    //protected function setUp(): void
+    //{
+    //    parent::setUp();
+    //    // Создаем тестовую директорию для изображений в хранилище
+    //    Storage::fake('public');
+    //}
+    //
+    //protected function tearDown(): void
+    //{
+    //    parent::tearDown();
+    //    // Удаляем временные изображения после тестов
+    //    Storage::disk('public')->deleteDirectory('images');
+    //}
+    //
     //public function testShowWidgetForActiveUser(): void
     //{
     //    // Создаем тестового пользователя
@@ -45,7 +45,7 @@ class ShowControllerTest extends TestCase
     //    $this->assertTrue($response->headers->contains('Content-Type', 'image/png'));
     //
     //    // Проверяем, что изображение было создано в хранилище
-    //    Storage::disk('public')->assertExists('images/' . $user->id . '_widget.png');
+    //    //Storage::disk('public')->assertExists('images/' . $user->id . '_widget.png');
     //}
     //
     //public function testShowWidgetForInactiveUser(): void
@@ -63,5 +63,4 @@ class ShowControllerTest extends TestCase
     //    // Проверяем, что ответ имеет статус 404 Not Found
     //    $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
     //}
-
 }
