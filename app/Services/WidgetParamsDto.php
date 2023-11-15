@@ -24,7 +24,19 @@ readonly class WidgetParamsDto
             empty($options['width']) ? 500 : (int)$options['width'],
             empty($options['height']) ? 500 : (int)$options['height'],
             empty($options['color']) ? '#fff' : (string)$options['color'],
-            empty($options['bgColor']) ? '#000' : (string)$options['bgColor'],
+            empty($options['bgcolor']) ? '#000' : (string)$options['bgcolor'],
         );
+    }
+
+    public function toArray(): array
+    {
+        return [
+            $this->id,
+            $this->text,
+            $this->width,
+            $this->height,
+            $this->color,
+            $this->bgColor,
+        ];
     }
 }
