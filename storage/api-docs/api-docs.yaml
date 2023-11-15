@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: 'Users Widget App API'
+  description: 'API docs for user-widget-app project'
+  contact:
+    name: 'Swagger API Team'
+  version: '1.0'
+servers:
+  -
+    url: 'http://localhost'
+    description: 'API server'
+paths:
+  '/api/v1/users/{id}/widget':
+    get:
+      tags:
+        - showWidget
+      summary: 'Generate Png Widget for User'
+      description: 'Generate Png Widget'
+      operationId: showWidget
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'User id'
+          required: true
+          explode: true
+          schema:
+            type: string
+        -
+          name: width
+          in: query
+          description: 'width of the widget in px'
+          required: false
+          explode: true
+          schema:
+            type: integer
+            default: 500
+        -
+          name: height
+          in: query
+          description: 'height of the widget in px'
+          required: false
+          explode: true
+          schema:
+            type: integer
+            default: 500
+        -
+          name: color
+          in: query
+          description: 'color of the widget text in HEX'
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: '#fff'
+        -
+          name: bgcolor
+          in: query
+          description: 'Background color of the widget text in HEX'
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: '#000'
+      responses:
+        200:
+          description: image/png
+        500:
+          description: 'Internal server error'
+      deprecated: false
+tags:
+  -
+    name: 'Users PNG Widget'
+    description: 'Users Png Widgets With Average Rating Of Reviews'

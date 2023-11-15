@@ -13,5 +13,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('users')->as('widgets:')->group(function () {
     Route::get('/', IndexController::class)->name('index'); // route('api:v1:users:index')
-    Route::get('/{id}/widget', ShowController::class)->name('showWidget'); // route('api:v1:users/{id}/widget')
+    Route::get('/{id}/widget', ShowController::class)->name('showWidget'); // route('api:v1:users:showWidget')
 });

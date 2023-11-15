@@ -1,0 +1,113 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Users Widget App API",
+        "description": "API docs for user-widget-app project",
+        "contact": {
+            "name": "Swagger API Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost",
+            "description": "API server"
+        }
+    ],
+    "paths": {
+        "/api/v1/users/": {
+            "get": {
+                "tags": [
+                    "Show All Users"
+                ],
+                "summary": "Show List Of ALl Users",
+                "description": "Show List Of ALl Users",
+                "operationId": "users",
+                "responses": {
+                    "200": {
+                        "description": "Application/json"
+                    },
+                    "404": {
+                        "description": "User Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/{id}/widget": {
+            "get": {
+                "tags": [
+                    "Show Users Png Widget"
+                ],
+                "summary": "Generate Png Widget for User",
+                "description": "Generate Png Widget",
+                "operationId": "usersWidget",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "width",
+                        "in": "query",
+                        "description": "width of the widget in px",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 500
+                        }
+                    },
+                    {
+                        "name": "height",
+                        "in": "query",
+                        "description": "height of the widget in px",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 500
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "description": "color of the widget text in HEX",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "#fff"
+                        }
+                    },
+                    {
+                        "name": "bgcolor",
+                        "in": "query",
+                        "description": "Background color of the widget text in HEX",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "#000"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "image/png"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    }
+}

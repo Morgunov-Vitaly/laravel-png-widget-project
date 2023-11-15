@@ -13,8 +13,92 @@ use App\Services\PngWidgetService;
 use App\Services\WidgetParamsDto;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @OA\Info(
+ *     version="1.0",
+ *     title="Users Widget App API",
+ *     description="API docs for user-widget-app project",
+ *     @OA\Contact(name="Swagger API Team")
+ * )
+ * @OA\Server(
+ *     url="http://localhost",
+ *     description="API server"
+ * )
+ */
 class ShowController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/v1/users/{id}/widget",
+     *     tags={"Show Users Png Widget"},
+     *     summary="Generate Png Widget for User",
+     *     description="Generate Png Widget",
+     *     operationId="usersWidget",
+     *     deprecated=false,
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="User id",
+     *          required=true,
+     *          explode=true,
+     *          @OA\Schema(
+     *               type="string",
+     *           )
+     *      ),
+     *     @OA\Parameter(
+     *         name="width",
+     *         in="query",
+     *         description="width of the widget in px",
+     *         required=false,
+     *         explode=true,
+     *         @OA\Schema(
+     *              default=500,
+     *              type="integer",
+     *          )
+     *     ),
+     *     @OA\Parameter(
+     *          name="height",
+     *          in="query",
+     *          description="height of the widget in px",
+     *          required=false,
+     *          explode=true,
+     *          @OA\Schema(
+     *               default=500,
+     *               type="integer",
+     *           )
+     *      ),
+     *     @OA\Parameter(
+     *          name="color",
+     *          in="query",
+     *          description="color of the widget text in HEX",
+     *          required=false,
+     *          explode=true,
+     *          @OA\Schema(
+     *               default="#fff",
+     *               type="string",
+     *           )
+     *      ),
+     *     @OA\Parameter(
+     *           name="bgcolor",
+     *           in="query",
+     *           description="Background color of the widget text in HEX",
+     *           required=false,
+     *           explode=true,
+     *           @OA\Schema(
+     *                default="#000",
+     *                type="string",
+     *            )
+     *       ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="image/png"
+     *      ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     * )
+     */
     public function __invoke(WidgetRequest $request, string $id)
     {
         $options = $request->validated();

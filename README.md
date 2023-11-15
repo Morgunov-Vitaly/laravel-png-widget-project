@@ -4,6 +4,7 @@
 
 ## Запуск проекта
 Для запуска проекта запустите команду `make init`
+OpenApi документация доступна по адресу http://localhost/api/documentation
 
 
 ## Dev
