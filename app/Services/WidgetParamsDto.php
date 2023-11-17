@@ -20,11 +20,11 @@ readonly class WidgetParamsDto
     {
         return new self(
             $options['id'],
-            empty($options['text']) ? '0' : (string)$options['text'],
-            empty($options['width']) ? 500 : (int)$options['width'],
-            empty($options['height']) ? 500 : (int)$options['height'],
-            empty($options['color']) ? '#fff' : (string)$options['color'],
-            empty($options['bgcolor']) ? '#000' : (string)$options['bgcolor'],
+            empty($options['text']) ? '0' : (string) $options['text'],
+            empty($options['width']) ? 500 : (int) $options['width'],
+            empty($options['height']) ? 500 : (int) $options['height'],
+            empty($options['color']) ? '#fff' : (string) $options['color'],
+            empty($options['bgcolor']) ? '#000' : (string) $options['bgcolor'],
         );
     }
 

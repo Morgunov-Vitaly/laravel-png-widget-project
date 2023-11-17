@@ -21,11 +21,11 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens,
-        HasFactory,
-        Notifiable,
-        HasUlids,
-        SoftDeletes;
+    use HasApiTokens;
+    use HasFactory;
+    use HasUlids;
+    use Notifiable;
+    use SoftDeletes;
 
     protected $fillable = [
         'name',

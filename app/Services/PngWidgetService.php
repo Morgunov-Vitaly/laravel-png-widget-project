@@ -10,9 +10,13 @@ use RuntimeException;
 class PngWidgetService
 {
     public const FONT_PATH = '/fonts/Montserrat-Bold.ttf';
+
     public const FONT_SIZE_MULTIPLICATION = 0.2;
+
     public const ANGLE = 0;
+
     public const EXTENSION = 'png';
+
     public const SUB_DIR = 'w-images';
 
     public static function createPngWidget(WidgetParamsDto $dto): ?string
@@ -64,6 +68,7 @@ class PngWidgetService
         // Move file to storage
         $storage->put($fileName . '.' . self::EXTENSION, file_get_contents($tempImagePath));
         unlink($tempImagePath);
+
         return $storage->path($fileName . '.' . self::EXTENSION);
     }
 
@@ -74,6 +79,7 @@ class PngWidgetService
         switch (strlen($hex)) {
             case 1:
                 $hex .= $hex;
+                // no break
             case 2:
                 $r = hexdec($hex);
                 $g = hexdec($hex);

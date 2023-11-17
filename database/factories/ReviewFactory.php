@@ -36,14 +36,14 @@ class ReviewFactory extends Factory
     public function withRating100(): ReviewFactory|Factory
     {
         return $this->state(fn (array $attributes) => [
-                'rating' => 100,
-            ]);
+            'rating' => 100,
+        ]);
     }
 
     public function withRating5(): ReviewFactory|Factory
     {
         return $this->state(fn (array $attributes) => [
-                'rating' => 5,
-            ]);
+            'rating' => 5,
+        ]);
     }
 }

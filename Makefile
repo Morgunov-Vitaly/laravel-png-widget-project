@@ -11,3 +11,10 @@ remove-logs:
 
 add-alias:
 	bash bash_aliases.sh
+
+pint:
+	./vendor/bin/sail php ./vendor/bin/pint --dirty $(ARGS)
+
+pint-test:
+	./vendor/bin/sail php ./vendor/bin/pint --dirty --test $(ARGS)
+

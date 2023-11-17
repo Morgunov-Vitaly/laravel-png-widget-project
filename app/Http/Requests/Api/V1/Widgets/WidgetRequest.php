@@ -27,7 +27,7 @@ class WidgetRequest extends FormRequest
                 'min:100',
                 'max:500',
             ],
-            'color' =>  [new HexColor('color')],
+            'color' => [new HexColor('color')],
             'bgcolor' => [new HexColor('bgcolor')],
         ];
     }

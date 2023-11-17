@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class UserStatusesEnumTest extends TestCase
 {
-
     public function testGetNameByValue(): void
     {
         $this->assertEquals('Inactive', UserStatusesEnum::getNameByValue(0));

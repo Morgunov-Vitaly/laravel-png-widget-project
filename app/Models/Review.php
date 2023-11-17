@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Review extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'rating',
@@ -34,6 +35,7 @@ class Review extends Model
         $avgRating = self::where('user_id', $userId)
             ->where('is_published', true)
             ->avg('rating');
+
         return round((float) $avgRating, $precision);
     }
 }
