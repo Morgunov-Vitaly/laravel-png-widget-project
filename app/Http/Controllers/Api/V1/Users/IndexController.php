@@ -12,21 +12,17 @@ class IndexController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/v1/users/",
-     *     tags={"Show All Users"},
-     *     summary="Show List Of ALl Users",
-     *     description="Show List Of ALl Users",
-     *     operationId="users",
-     *     deprecated=false,
-     *
+     *     path="/api/v1/users",
+     *     summary="Get list of users",
+     *     tags={"Users"},
      *     @OA\Response(
-     *          response=200,
-     *          description="Application/json"
-     *      ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="User Not Found"
-     *     ),
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/UserResource")
+     *         )
+     *     )
      * )
      */
     public function __invoke()

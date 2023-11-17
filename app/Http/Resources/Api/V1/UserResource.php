@@ -11,6 +11,17 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
+    /**
+     * @OA\Schema(
+     *     schema="UserResource",
+     *     title="User Resource",
+     *     @OA\Property(property="id", type="integer"),
+     *     @OA\Property(property="name", type="string"),
+     *     @OA\Property(property="status", type="string"),
+     *     @OA\Property(property="avgRating", type="integer"),
+     * )
+     */
+
     public function toArray(Request $request): array
     {
         return [

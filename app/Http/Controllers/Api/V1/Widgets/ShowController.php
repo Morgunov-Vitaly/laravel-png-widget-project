@@ -13,103 +13,63 @@ use App\Services\PngWidgetService;
 use App\Services\WidgetParamsDto;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @OA\Info(
- *     version="1.0",
- *     title="Users Widget App API",
- *     description="API docs for user-widget-app project",
- *
- *     @OA\Contact(name="Swagger API Team")
- * )
- *
- * @OA\Server(
- *     url="http://localhost",
- *     description="API server"
- * )
- */
 class ShowController extends Controller
 {
     /**
      * @OA\Get(
      *     path="/api/v1/users/{id}/widget",
-     *     tags={"Show Users Png Widget"},
-     *     summary="Generate Png Widget for User",
-     *     description="Generate Png Widget",
-     *     operationId="usersWidget",
-     *     deprecated=false,
-     *
+     *     summary="Get user's widget",
+     *     tags={"Widgets"},
      *     @OA\Parameter(
-     *          name="id",
-     *          in="path",
-     *          description="User id",
-     *          required=true,
-     *          explode=true,
-     *
-     *          @OA\Schema(
-     *               type="string",
-     *           )
-     *      ),
-     *
-     *     @OA\Parameter(
-     *         name="width",
-     *         in="query",
-     *         description="width of the widget in px",
-     *         required=false,
-     *         explode=true,
-     *
-     *         @OA\Schema(
-     *              default=500,
-     *              type="integer",
-     *          )
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="User ID",
+     *         @OA\Schema(type="string")
      *     ),
-     *
-     *     @OA\Parameter(
-     *          name="height",
-     *          in="query",
-     *          description="height of the widget in px",
-     *          required=false,
-     *          explode=true,
-     *
-     *          @OA\Schema(
-     *               default=500,
-     *               type="integer",
-     *           )
-     *      ),
-     *
-     *     @OA\Parameter(
-     *          name="color",
-     *          in="query",
-     *          description="color of the widget text in HEX",
-     *          required=false,
-     *          explode=true,
-     *
-     *          @OA\Schema(
-     *               default="#fff",
-     *               type="string",
-     *           )
-     *      ),
-     *
-     *     @OA\Parameter(
-     *           name="bgcolor",
+     *      @OA\Parameter(
+     *           name="width",
      *           in="query",
-     *           description="Background color of the widget text in HEX",
+     *           description="Width of the widget in px",
      *           required=false,
-     *           explode=true,
-     *
-     *           @OA\Schema(
-     *                default="#000",
-     *                type="string",
-     *            )
+     *           @OA\Schema(type="integer", format="int32", minimum=100, maximum=500, default=500)
      *       ),
-     *
+     *  @OA\Parameter(
+     *       name="height",
+     *       in="query",
+     *       description="Height of the widget in px",
+     *       required=false,
+     *       @OA\Schema(type="integer", format="int32", minimum=100, maximum=500, default=500)
+     *   ),
+     *   @OA\Parameter(
+     *       name="color",
+     *       in="query",
+     *       description="Color of the widget in hex format",
+     *       required=false,
+     *       @OA\Schema(type="string", pattern="^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
+     *   ),
+     *   @OA\Parameter(
+     *       name="bgcolor",
+     *       in="query",
+     *       description="Background color of the widget in hex format",
+     *       required=false,
+     *       @OA\Schema(type="string", pattern="^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
+     *   ),
      *     @OA\Response(
-     *          response=200,
-     *          description="image/png"
-     *      ),
+     *         response=200,
+     *         description="Widget image",
+     *         @OA\MediaType(
+     *             mediaType="image/png"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="User not found or not active"
+     *     ),
      *     @OA\Response(
      *         response=500,
-     *         description="Internal server error"
-     *     ),
+     *         description="Internal Server Error"
+     *     )
      * )
      */
     public function __invoke(WidgetRequest $request, string $id)
@@ -119,7 +79,7 @@ class ShowController extends Controller
         }
 
         $options = $request->validated();
-        $options['text'] = (string) Review::getAverageRatingByUserId($id, 2);
+        $options['text'] = (string)Review::getAverageRatingByUserId($id, 2);
         $options['id'] = $id;
         $dto = WidgetParamsDto::fromArray($options);
 
