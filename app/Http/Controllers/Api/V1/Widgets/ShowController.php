@@ -46,14 +46,14 @@ class ShowController extends Controller
      *       in="query",
      *       description="Color of the widget in hex format",
      *       required=false,
-     *       @OA\Schema(type="string", pattern="^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
+     *       @OA\Schema(type="string", pattern="^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", default="#fff")
      *   ),
      *   @OA\Parameter(
      *       name="bgcolor",
      *       in="query",
      *       description="Background color of the widget in hex format",
      *       required=false,
-     *       @OA\Schema(type="string", pattern="^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
+     *       @OA\Schema(type="string", pattern="^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", default="#000")
      *   ),
      *     @OA\Response(
      *         response=200,

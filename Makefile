@@ -18,3 +18,5 @@ pint:
 pint-test:
 	./vendor/bin/sail php ./vendor/bin/pint --dirty --test $(ARGS)
 
+generate-api-docs:
+	./vendor/bin/sail artisan l5-swagger:generate

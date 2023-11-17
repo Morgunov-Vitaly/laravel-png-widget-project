@@ -59,11 +59,12 @@
                     {
                         "name": "width",
                         "in": "query",
-                        "description": "Width of the widget",
+                        "description": "Width of the widget in px",
                         "required": false,
                         "schema": {
                             "type": "integer",
                             "format": "int32",
+                            "default": 500,
                             "maximum": 500,
                             "minimum": 100
                         }
@@ -71,11 +72,12 @@
                     {
                         "name": "height",
                         "in": "query",
-                        "description": "Height of the widget",
+                        "description": "Height of the widget in px",
                         "required": false,
                         "schema": {
                             "type": "integer",
                             "format": "int32",
+                            "default": 500,
                             "maximum": 500,
                             "minimum": 100
                         }
@@ -87,6 +89,7 @@
                         "required": false,
                         "schema": {
                             "type": "string",
+                            "default": "#fff",
                             "pattern": "^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
                         }
                     },
@@ -97,6 +100,7 @@
                         "required": false,
                         "schema": {
                             "type": "string",
+                            "default": "#000",
                             "pattern": "^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
                         }
                     }
