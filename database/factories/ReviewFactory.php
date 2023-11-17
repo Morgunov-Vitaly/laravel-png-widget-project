@@ -13,11 +13,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ReviewFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Review::class;
+
     public function definition(): array
     {
         return [
@@ -25,5 +22,28 @@ class ReviewFactory extends Factory
             'is_published' => fake()->boolean(80),
             'rating' => fake()->numberBetween(1, 100),
         ];
+    }
+
+    public function published(): ReviewFactory|Factory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_published' => true,
+            ];
+        });
+    }
+
+    public function withRating100(): ReviewFactory|Factory
+    {
+        return $this->state(fn (array $attributes) => [
+                'rating' => 100,
+            ]);
+    }
+
+    public function withRating5(): ReviewFactory|Factory
+    {
+        return $this->state(fn (array $attributes) => [
+                'rating' => 5,
+            ]);
     }
 }

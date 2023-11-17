@@ -26,7 +26,7 @@ class Review extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo('users');
+        return $this->belongsTo(User::class);
     }
 
     public static function getAverageRatingByUserId(string $userId, ?int $precision = 2)

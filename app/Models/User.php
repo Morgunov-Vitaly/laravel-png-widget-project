@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function reviews(): HasMany
     {
-        return $this->hasMany('reviews');
+        return $this->hasMany(Review::class);
     }
 
     public function getStatusName(): string
