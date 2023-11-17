@@ -121,7 +121,11 @@ composer install --ignore-platform-reqs`
 В локальном окружении использован тестовый сервис MailHog в локальном окружении доступен по
 адресу [http://localhost:8025/](http://localhost:8025/)
 
-### Хелперы
+### Тесты
+`sail artisan test` - для запуска всех тестов
+`sail artisan test --filter unit` - для запуска только Unit тестов
+`sail artisan test --filter testShowUsersWidget` - для запуска конкретного теста
+
 
 #### Очистка кеша системы при внесении изменений в конфигурацию:
 `php artisan cache:clear && php artisan route:clear && php artisan config:clear && php artisan view:clear`
