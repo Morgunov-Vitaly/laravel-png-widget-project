@@ -12,16 +12,11 @@ class HexColor implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (isset($value, $attribute)) {
-            if (!is_string($value)) {
-                $fail('The :attribute must be in string HEX format');
-            }
 
-            if (strlen($value) < 3) {
-                $fail('Too short value. :attribute must be in HEX format.');
-            }
-
-            if (strlen($value) > 9) {
-                $fail('Too long value. :attribute must be in HEX format.');
+            $pattern = '/^#?([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/';
+            // fff #fff #ffffff #4559a4b5 (последнее содержит информацию о прозрачности)
+            if (!preg_match($pattern, $value)) {
+                $fail('Incorrect value. :attribute must be in HEX format.');
             }
         }
     }
